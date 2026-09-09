@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ function App() {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("content_type", contentType);
-      const response = await fetch("http://localhost:8000/generate-content", {
+      const response = await fetch(`${API_URL}/generate-content`, {
         method: "POST",
         body: formData,
       });
