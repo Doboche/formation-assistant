@@ -9,10 +9,13 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # l'origine de ton frontend Vite
+    allow_origins=[
+        "http://localhost:5173",
+        "https://formation-assistant.vercel.app",  
+    ],
     allow_credentials=True,
-    allow_methods=["*"],   # autorise toutes les méthodes (GET, POST...)
-    allow_headers=["*"],   # autorise tous les headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 # Le modèle qui décrit les données entrantes
 class CourseInput(BaseModel):
